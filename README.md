@@ -16,7 +16,7 @@
 
 2. Copy the script to `/usr/bin` and make it executable:
    ```bash
-   sudo cp ask /usr/bin/
+   sudo cp ask.py /usr/bin/ask
    sudo chmod +x /usr/bin/ask
    ```
 
