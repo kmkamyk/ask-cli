@@ -10,7 +10,7 @@
 ## Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/ask-cli.git
+   git clone https://github.com/kmkamyk/ask-cli.git
    cd ask-cli
    ```
 
@@ -43,8 +43,4 @@ model:
   name: "Meta-Llama-3.1"
   system_prompt: "You are a helpful CLI assistant in BASH. Display only the command on the screen and nothing else."
   temperature: 0.7
-```
-
-## License
-This project is licensed under the MIT License. See the `LICENSE` file for details.
 ```
