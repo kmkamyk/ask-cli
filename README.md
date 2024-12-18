@@ -1,14 +1,19 @@
 # Ask CLI
 **Ask CLI** is a command-line tool for interacting with Large Language Models (LLMs), both local and public. It allows you to send queries and receive concise command-line responses.
 
+
 ## Example Usage
+
+<img width="908" alt="image" src="https://github.com/user-attachments/assets/6d2d783e-0211-4a5f-8da9-01070f0ca1c8" />
+
+You can ask for specific command-line tasks:
 ```bash
-ask "How to find the oldest files in the current directory?"
+ask How can I compress a directory into a tar.gz file?
 ```
 
-Expected output:
+**Output**:
 ```bash
-find . -type f -print -exec stat -c "%Y %n" {} \; | sort -rn | head
+tar -czvf archive.tar.gz /path/to/directory
 ```
 
 ## Features
