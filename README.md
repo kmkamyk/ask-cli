@@ -1,13 +1,23 @@
 # Ask CLI
+**Ask CLI** is a command-line tool for interacting with Large Language Models (LLMs), both local and public. It allows you to send queries and receive concise command-line responses.
 
-**Ask CLI** is a command-line tool for interacting with a local LLM (Large Language Model) server. It allows you to send queries and receive concise command-line responses.
+## Example Usage
+```bash
+ask "How to find the oldest files in the current directory?"
+```
 
-ASK-CLI is compatible with all tools that support the OpenAI API or work in a similar way, such as Ollama and llama.cpp. This allows users to leverage a broad ecosystem of AI tools, integrating them into their projects regardless of their preferred framework or technology.
+Expected output:
+```bash
+find . -type f -print -exec stat -c "%Y %n" {} \; | sort -rn | head
+```
 
 ## Features
-- Sends user input to a local LLM server.
-- Displays only the command-line output without additional text.
-- Reads configuration from `/etc/ask/config.yml`.
+
+- Communicates with local LLM servers (e.g., [Ollama](https://ollama.ai/) or [Llama.cpp](https://github.com/ggerganov/llama.cpp)).
+- Supports public LLM APIs (e.g., OpenAI's GPT models).
+- Customizable configuration via YAML.
+- Streamed responses for real-time interaction.
+- Lightweight and easy to use.
 
 ## Installation
 1. Clone the repository:
@@ -23,16 +33,6 @@ ASK-CLI is compatible with all tools that support the OpenAI API or work in a si
    ```
 
 3. Place the configuration file in `/etc/ask/config.yml`.
-
-## Example Usage
-```bash
-ask "How to find the oldest files in the current directory?"
-```
-
-Expected output:
-```bash
-find . -type f -print -exec stat -c "%Y %n" {} \; | sort -rn | head
-```
 
 ## Configuration
 The tool reads its configuration from `/etc/ask/config.yml`. Example:
