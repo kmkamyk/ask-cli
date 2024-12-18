@@ -2,6 +2,8 @@
 
 **Ask CLI** is a command-line tool for interacting with a local LLM (Large Language Model) server. It allows you to send queries and receive concise command-line responses.
 
+ASK-CLI is compatible with all tools that support the OpenAI API or work in a similar way, such as Ollama and llama.cpp. This allows users to leverage a broad ecosystem of AI tools, integrating them into their projects regardless of their preferred framework or technology.
+
 ## Features
 - Sends user input to a local LLM server.
 - Displays only the command-line output without additional text.
