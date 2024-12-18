@@ -1,0 +1,8 @@
+api:
+  base_url: "http://<HOSTNAME_IP_ADDRESS>:<PORT_NR>/v1"
+  api_key: "sk-no-key-required"
+
+model:
+  name: "<MODEL_NAME>" # example "Meta-Llama-3.1"
+  system_prompt: "You are a helpful CLI assistant in BASH. Display only the command on the screen and nothing else."
+  temperature: 0.0
