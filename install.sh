@@ -19,15 +19,17 @@ install() {
         sudo mkdir -p $ASK_CONFIG_DIR
     fi
 
-    # Download ask.py
-    curl -sfL $ASK_PY_URL -o $ASK_PY_DEST
+    # Download ask.py with sudo to the correct destination
+    echo "Downloading ask.py..."
+    sudo curl -sfL $ASK_PY_URL -o $ASK_PY_DEST
     if [ $? -ne 0 ]; then
         echo "Error downloading ask.py"
         exit 1
     fi
 
-    # Download config.yml
-    curl -sfL $CONFIG_YML_URL -o $CONFIG_YML_DEST
+    # Download config.yml with sudo to the correct destination
+    echo "Downloading config.yml..."
+    sudo curl -sfL $CONFIG_YML_URL -o $CONFIG_YML_DEST
     if [ $? -ne 0 ]; then
         echo "Error downloading config.yml"
         exit 1
