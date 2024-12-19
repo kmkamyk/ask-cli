@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+"""
+ask.py - CLI Assistant for querying an LLM using OpenAI API.
+
+This script provides a command-line interface to interact with an
+LLM (Language Model) via a configuration file.
+"""
 
 import os
 import sys
