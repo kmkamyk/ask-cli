@@ -122,5 +122,5 @@ def main():
     # Send the query to the LLM
     query_llm(user_input, config)
     
-if __name__ ==
+if __name__ == "__main__":
     main()
