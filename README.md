@@ -1,7 +1,7 @@
 # Ask CLI
 **Ask CLI** is a Linux shell LLM assistant designed to assist system administrators with their daily tasks. It connects to local or internet-accessible Large Language Models (LLMs) using APIs compatible with Openai api standards, allowing users to send queries and receive concise, actionable responses directly in the terminal.
 
-It works seamlessly with tools like [llama.cpp](https://github.com/ggerganov/llama.cpp) and [Ollama](https://github.com/ollama/ollama), which enable running all the most popular open-source LLMs, such as LLaMA 3, Gemma, and Mistral, providing flexibility and enhanced privacy.
+It works seamlessly with tools like [llama.cpp](https://github.com/ggerganov/llama.cpp) and [Ollama](https://github.com/ollama/ollama), which enable running all the most popular open LLMs, such as LLaMA 3, Gemma, and Mistral, providing flexibility and enhanced privacy.
 
 
 <img width="908" alt="image" src="https://github.com/user-attachments/assets/6d2d783e-0211-4a5f-8da9-01070f0ca1c8" />
