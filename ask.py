@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 ask.py - CLI Assistant for querying an LLM using OpenAI API.
 
