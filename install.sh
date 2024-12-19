@@ -57,7 +57,7 @@ uninstall() {
     echo "Uninstallation complete!"
 }
 
-# Check for arguments
+# Check for arguments and call the appropriate function
 if [ "$1" == "uninstall" ]; then
     uninstall
 else
