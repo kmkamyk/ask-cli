@@ -137,6 +137,15 @@ def main():
     except yaml.YAMLError as error:
         print(f"Error parsing configuration file: {error}")
         sys.exit(1)
+    except openai.OpenAIError as error:
+        print(f"Error communicating with OpenAI API: {error}")
+        sys.exit(1)
+    except KeyboardInterrupt:
+        print("\nProcess interrupted by user.")
+        sys.exit(0)
+    except OSError as error:
+        print(f"System error: {error}")
+        sys.exit(1)
     except Exception as error:
         print(f"Unexpected error: {error}")
         sys.exit(1)
