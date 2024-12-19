@@ -114,7 +114,7 @@ def query_llm(prompt, config):
             if text_chunk:
                 print(text_chunk, end="", flush=True)
         print()  # Add a new line after the response
-    except openai.error.OpenAIError as error:
+    except openai.OpenAIError as error:
         print(f"Error: {error}")
 
 def main():
@@ -131,8 +131,14 @@ def main():
 
     try:
         config = load_config(CONFIG_PATH)
+    except FileNotFoundError:
+        print(f"Configuration file not found at {CONFIG_PATH}.")
+        sys.exit(1)
+    except yaml.YAMLError as error:
+        print(f"Error parsing configuration file: {error}")
+        sys.exit(1)
     except Exception as error:
-        print(f"Error loading configuration: {error}")
+        print(f"Unexpected error: {error}")
         sys.exit(1)
 
     if len(sys.argv) < 2:
