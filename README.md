@@ -41,7 +41,7 @@ This will automatically download and install `ask.py` to `/usr/bin/ask` and `con
 To uninstall, run:
 
 ```bash
-curl -sfL https://github.com/kmkamyk/ask-cli/raw/main/install.sh | sh - uninstall
+curl -sfL https://github.com/kmkamyk/ask-cli/raw/main/install.sh | sh -s uninstall
 ```
 
 #### Option 2: Manual Installation (Using Git)
