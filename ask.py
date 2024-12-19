@@ -146,9 +146,6 @@ def main():
     except OSError as error:
         print(f"System error: {error}")
         sys.exit(1)
-    except Exception as error:
-        print(f"Unexpected error: {error}")
-        sys.exit(1)
 
     if len(sys.argv) < 2:
         print("Usage: ask <query>")
