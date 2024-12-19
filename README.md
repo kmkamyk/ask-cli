@@ -1,5 +1,5 @@
 # Ask CLI
-**Ask CLI** is a command-line tool for interacting with Large Language Models (LLMs), both local and public. It allows you to send queries and receive concise command-line responses.
+**Ask CLI** tool is a command-line application designed to assist Linux system administrators with their daily tasks by leveraging the power of Large Language Models (LLMs). It connects to local and internet-accessible LLMs using APIs compatible with Openai API standards, allowing users to send queries and receive responses directly in the terminal.
 
 <img width="908" alt="image" src="https://github.com/user-attachments/assets/6d2d783e-0211-4a5f-8da9-01070f0ca1c8" />
 
