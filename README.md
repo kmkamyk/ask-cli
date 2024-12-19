@@ -27,16 +27,44 @@ tar -czvf archive.tar.gz /path/to/directory
 - Lightweight and easy to use.
 
 ## Installation
+
+#### Option 1: Using the Installation Script (Recommended)
+
+To install **Ask CLI** with the provided script, run the following command:
+
+```bash
+curl -sfL https://github.com/kmkamyk/ask-cli/raw/main/install.sh | sh -
+```
+
+This will automatically download and install `ask.py` to `/usr/bin/ask` and `config.yml` to `/etc/ask/config.yml`.
+
+To uninstall, run:
+
+```bash
+curl -sfL https://github.com/kmkamyk/ask-cli/raw/main/install.sh | sh - uninstall
+```
+
+#### Option 2: Manual Installation (Using Git)
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/kmkamyk/ask-cli.git
    cd ask-cli
    ```
 
-2. Copy the script to `/usr/bin` and make it executable:
+2. Copy the `ask.py` script to `/usr/bin/` and make it executable:
+
    ```bash
    sudo cp ask.py /usr/bin/ask
    sudo chmod +x /usr/bin/ask
+   ```
+
+3. Place the `config.yml` configuration file in `/etc/ask/`:
+
+   ```bash
+   sudo mkdir -p /etc/ask
+   sudo cp config.yml /etc/ask/config.yml
    ```
 
 3. Place the configuration file in `/etc/ask/config.yml`.
