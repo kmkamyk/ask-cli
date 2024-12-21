@@ -93,7 +93,7 @@ To use **Ask CLI**, follow these steps:
    ```yaml
    api:
      base_url: "http://localhost:11434/v1"  # Replace localhost with the server's IP if needed
-     api_key: ""  # Leave empty for local servers like Ollama
+     api_key: "sk-no-key-required"
    model:
      name: "llama3.1"  # The name of the model to use
      system_prompt: "You are a helpful CLI assistant. Only output the command and nothing else."
