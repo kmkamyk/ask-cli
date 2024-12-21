@@ -52,22 +52,26 @@ curl -sfL https://github.com/kmkamyk/ask-cli/raw/main/install.sh | sh -s uninsta
    git clone https://github.com/kmkamyk/ask-cli.git
    cd ask-cli
    ```
+2. Install requirements for Python.
 
-2. Copy the `ask.py` script to `/usr/bin/` and make it executable:
+   ```bash
+   python3 -m pip install -r requirements.txt
+   ```
+4. Copy the `ask.py` script to `/usr/bin/` and make it executable:
 
    ```bash
    sudo cp ask.py /usr/bin/ask
    sudo chmod +x /usr/bin/ask
    ```
 
-3. Place the `config.yml` configuration file in `/etc/ask/`:
+5. Place the `config.yml` configuration file in `/etc/ask/`:
 
    ```bash
    sudo mkdir -p /etc/ask
    sudo cp config.yml /etc/ask/config.yml
    ```
 
-3. Place the configuration file in `/etc/ask/config.yml`.
+6. Place the configuration file in `/etc/ask/config.yml`.
 
 ## Configuration
 The tool reads its configuration from `/etc/ask/config.yml`. Example:
