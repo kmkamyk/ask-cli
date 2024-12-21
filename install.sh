@@ -67,12 +67,27 @@ install() {
 
     echo "Installation complete!"
 }
+# Uninstallation function
+uninstall() {
+    echo "Uninstalling Ask CLI..."
+
+    # Remove ask.py
+    sudo rm -f $ASK_PY_DEST
+
+    # Remove config.yml
+    sudo rm -f $CONFIG_YML_DEST
+
+    # Remove /etc/ask directory if it's empty
+    if [ -d "$ASK_CONFIG_DIR" ]; then
+        sudo rmdir $ASK_CONFIG_DIR
+    fi
+
+    echo "Uninstallation complete!"
+}
 
 # Check for arguments and call the appropriate function
 if [ "$1" == "uninstall" ]; then
-    echo "Uninstall functionality is not supported in this script."
-    exit 1
+    uninstall
 else
-    install_dependencies
     install
 fi
