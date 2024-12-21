@@ -18,19 +18,19 @@ install_dependencies() {
         # Debian-based systems
         echo "Detected Debian-based system. Installing packages..."
         sudo apt-get update
-        sudo apt-get install -y python3 python3-pip python3-pyyaml
+        sudo apt-get install -y python3 python3-pip
         
         # Install Python dependencies using pip
         echo "Installing Python dependencies..."
-        sudo pip3 install openai
+        sudo pip3 install openai pyyaml
     elif command -v yum &>/dev/null; then
         # RHEL-based systems
         echo "Detected RHEL-based system. Installing packages..."
-        sudo yum install -y python3 python3-pip python3-pyyaml
+        sudo yum install -y python3 python3-pip
         
         # Install Python dependencies using pip
         echo "Installing Python dependencies..."
-        sudo pip3 install openai
+        sudo pip3 install openai pyyaml
     else
         echo "Unsupported distribution. Please ensure the following packages are installed on your system:"
         echo "  - python3"
