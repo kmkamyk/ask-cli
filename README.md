@@ -73,6 +73,39 @@ curl -sfL https://github.com/kmkamyk/ask-cli/raw/main/install.sh | sh -s uninsta
 
 6. Place the configuration file in `/etc/ask/config.yml`.
 
+## Example use.
+
+To use **Ask CLI**, follow these steps:
+
+1. **Install a Local LLM Server**  
+   Install a compatible LLM server such as [Ollama](https://ollama.com/). Ollama provides an easy way to run large language models locally.
+
+2. **Download a Model**  
+   After installing Ollama, download a model that you want to use. For example, to download and run the `llama3.1` model, use the following command:  
+   ```bash
+   ollama run llama3.1
+   ```
+
+3. **Configure Ask CLI**  
+   Edit the `/etc/ask/config.yml` configuration file to point to the LLM server. If Ask CLI and the LLM server (e.g., Ollama) are running on the same machine, use `localhost` as the IP address. Otherwise, specify the IP address of the machine hosting the LLM server.
+
+   Example configuration:
+   ```yaml
+   api:
+     base_url: "http://localhost:11434/v1"  # Replace localhost with the server's IP if needed
+     api_key: ""  # Leave empty for local servers like Ollama
+   model:
+     name: "llama3.1"  # The name of the model to use
+     system_prompt: "You are a helpful CLI assistant. Only output the command and nothing else."
+     temperature: 0.0
+   ```
+
+4. **Start Asking**  
+   Once the configuration is set up, you can use the ask command to send queries to the LLM. For example:
+   ```bash
+   ask How to find the oldest files in the current directory?
+   ```
+
 ## Configuration
 The tool reads its configuration from `/etc/ask/config.yml`. Example:
 ```yaml
