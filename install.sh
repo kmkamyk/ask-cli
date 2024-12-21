@@ -11,18 +11,26 @@ ASK_CONFIG_DIR="/etc/ask"
 
 # Function to install required packages
 install_dependencies() {
-    echo "Installing Python 3, pip, and Python dependencies globally..."
+    echo "Installing Python 3, pip, and Python dependencies..."
 
     # Detect the package manager and install Python and pip
     if command -v apt-get &>/dev/null; then
         # Debian-based systems
         echo "Detected Debian-based system. Installing packages..."
         sudo apt-get update
-        sudo apt-get install -y python3 python3-pip
+        sudo apt-get install -y python3 python3-pip python3-pyyaml
+        
+        # Install Python dependencies using pip
+        echo "Installing Python dependencies..."
+        sudo pip3 install openai
     elif command -v yum &>/dev/null; then
         # RHEL-based systems
         echo "Detected RHEL-based system. Installing packages..."
-        sudo yum install -y python3 python3-pip
+        sudo yum install -y python3 python3-pip python3-pyyaml
+        
+        # Install Python dependencies using pip
+        echo "Installing Python dependencies..."
+        sudo pip3 install openai
     else
         echo "Unsupported distribution. Please ensure the following packages are installed on your system:"
         echo "  - python3"
@@ -30,10 +38,6 @@ install_dependencies() {
         echo "  - Python libraries: openai, pyyaml"
         exit 1
     fi
-
-    # Install Python dependencies globally using pip
-    echo "Installing Python dependencies globally..."
-    sudo pip3 install openai pyyaml
 }
 
 # Installation function
