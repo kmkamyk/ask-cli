@@ -3,7 +3,8 @@
 ask.py - CLI Assistant for querying an LLM using OpenAI API.
 
 This script provides a command-line interface to interact with an
-LLM (Language Model) via a configuration file.
+LLM (Language Model) via a configuration file, with support for
+data streams to override the system prompt.
 """
 
 import os
@@ -72,6 +73,7 @@ Usage:
   ask <query>           Send a query to the LLM and get a response.
   ask --version, -v     Display the version of the CLI tool.
   ask --help, -h        Display this help message.
+  <command> | ask <query>  Send the output of a command as the system prompt.
 
 Configuration:
   The tool uses a configuration file located at {CONFIG_PATH}.
@@ -88,12 +90,13 @@ Configuration:
 """
     print(help_text)
 
-def query_llm(prompt, config):
+def query_llm(prompt, system_prompt, config):
     """
     Send a query to the LLM and display the response.
 
     Args:
         prompt (str): User's input query.
+        system_prompt (str): The system prompt to use for the LLM.
         config (dict): Configuration dictionary for API and model.
     """
     client = openai.OpenAI(
@@ -104,7 +107,7 @@ def query_llm(prompt, config):
         completion = client.chat.completions.create(
             model=config["model"]["name"],
             messages=[
-                {"role": "system", "content": config["model"]["system_prompt"]},
+                {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
             ],
             temperature=config["model"].get("temperature", 0.7),
@@ -148,13 +151,19 @@ def main():
         print(f"System error: {error}")
         sys.exit(1)
 
+    # Check if data is provided via stdin
+    if not sys.stdin.isatty():
+        system_prompt = sys.stdin.read().strip()
+    else:
+        system_prompt = config["model"]["system_prompt"]
+
     if len(sys.argv) < 2:
         print("Usage: ask <query>")
         print("Use --help or -h for more information.")
         sys.exit(1)
 
     user_input = " ".join(sys.argv[1:])
-    query_llm(user_input, config)
+    query_llm(user_input, system_prompt, config)
 
 if __name__ == "__main__":
     main()
