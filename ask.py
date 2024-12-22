@@ -90,13 +90,13 @@ Configuration:
 """
     print(help_text)
 
-def query_llm(prompt, system_prompt, config):
+def query_llm(prompt, log_prompt, config):
     """
     Send a query to the LLM and display the response.
 
     Args:
         prompt (str): User's input query.
-        system_prompt (str): The system prompt to use for the LLM.
+        log_prompt (str): The log data from the command to be used as a user prompt.
         config (dict): Configuration dictionary for API and model.
     """
     client = openai.OpenAI(
@@ -104,15 +104,25 @@ def query_llm(prompt, system_prompt, config):
         api_key=config["api"]["api_key"],
     )
     try:
+        # Build the messages list
+        messages = [{"role": "system", "content": config["model"]["system_prompt"]}]
+        
+        # If log_prompt is available, add it as a "user" role
+        if log_prompt:
+            messages.append({"role": "user", "content": log_prompt})
+
+        # Add the user's input prompt as a "user" role
+        messages.append({"role": "user", "content": prompt})
+
+        # Send the request to OpenAI API
         completion = client.chat.completions.create(
             model=config["model"]["name"],
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": prompt}
-            ],
+            messages=messages,
             temperature=config["model"].get("temperature", 0.7),
             stream=True,
         )
+
+        # Output the response from the model
         for chunk in completion:
             text_chunk = chunk.choices[0].delta.content
             if text_chunk:
@@ -151,11 +161,10 @@ def main():
         print(f"System error: {error}")
         sys.exit(1)
 
-    # Check if data is provided via stdin
+    # Check if data is provided via stdin (stream)
+    log_prompt = ""
     if not sys.stdin.isatty():
-        system_prompt = sys.stdin.read().strip()
-    else:
-        system_prompt = config["model"]["system_prompt"]
+        log_prompt = sys.stdin.read().strip()
 
     if len(sys.argv) < 2:
         print("Usage: ask <query>")
@@ -163,7 +172,7 @@ def main():
         sys.exit(1)
 
     user_input = " ".join(sys.argv[1:])
-    query_llm(user_input, system_prompt, config)
+    query_llm(user_input, log_prompt, config)
 
 if __name__ == "__main__":
     main()
